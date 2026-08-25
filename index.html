@@ -1,35 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BCSO | Blaine County Sheriff's Office</title>
-  <meta name="description" content="Blaine County Sheriff's Office portal">
-  <style>
-    *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b0f14;color:#f5f7fa}header{background:#111821;border-bottom:1px solid #28323d;padding:18px 7%;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:800;font-size:20px}.brand span{color:#d6a84f}nav a{color:#cbd5df;text-decoration:none;margin-left:24px;font-size:14px}nav a:hover{color:#fff}.hero{padding:90px 7%;background:linear-gradient(135deg,#111821,#182330)}.eyebrow{color:#d6a84f;font-weight:700;letter-spacing:2px}.hero h1{font-size:52px;margin:12px 0}.hero p{max-width:650px;color:#aeb9c5;font-size:18px;line-height:1.6}.buttons{margin-top:28px}.btn{display:inline-block;padding:13px 20px;border-radius:7px;text-decoration:none;font-weight:700;margin-right:10px}.primary{background:#d6a84f;color:#111}.secondary{border:1px solid #46515d;color:#fff}.grid{padding:55px 7%;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.card{background:#111821;border:1px solid #26313c;border-radius:10px;padding:25px}.card h2{margin-top:0}.card p{color:#9da9b5;line-height:1.5}footer{padding:30px 7%;border-top:1px solid #28323d;color:#75818d;text-align:center;font-size:13px}@media(max-width:700px){.hero h1{font-size:38px}nav{display:none}}
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BCSO | Blaine County Sheriff's Office</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="brand">BCSO <span>◆</span> BLAINE COUNTY SHERIFF'S OFFICE</div>
-    <nav><a href="#home">Home</a><a href="#resources">Resources</a><a href="#contact">Contact</a></nav>
-  </header>
-  <main id="home">
-    <section class="hero">
-      <div class="eyebrow">BLAINE COUNTY • SAN ANDREAS</div>
-      <h1>Serving with integrity.</h1>
-      <p>Welcome to the Blaine County Sheriff's Office portal. Access department resources, personnel information, reports, standard operating procedures, and applications.</p>
-      <div class="buttons"><a class="btn primary" href="#resources">View Resources</a><a class="btn secondary" href="#contact">Contact BCSO</a></div>
-    </section>
-    <section class="grid" id="resources">
-      <div class="card"><h2>👮 Roster</h2><p>View department personnel, ranks, divisions, and assignments.</p></div>
-      <div class="card"><h2>📝 Reports</h2><p>Access department report resources and documentation.</p></div>
-      <div class="card"><h2>📖 SOPs</h2><p>Review current standard operating procedures and department policies.</p></div>
-      <div class="card"><h2>📋 Applications</h2><p>Submit and review applications for department positions and subdivisions.</p></div>
-      <div class="card"><h2>🔐 Admin Panel</h2><p>Restricted administrative tools for authorized BCSO command staff.</p></div>
-      <div class="card"><h2>📊 Department Stats</h2><p>Department activity and personnel statistics will be displayed here.</p></div>
-    </section>
-  </main>
-  <footer id="contact">© 2026 Blaine County Sheriff's Office • BCSO Website</footer>
-</body>
-</html>
+<div class="topbar"><div>🚨 BLAINE COUNTY SHERIFF'S OFFICE</div><div class="status"><i></i> Department Portal Online</div></div>
+<header class="nav"><a class="logo" href="#home"><span class="badge">★</span><span><b>BCSO</b><small>BLAINE COUNTY SHERIFF'S OFFICE</small></span></a><nav><a href="#home">Home</a><a href="#roster">Roster</a><a href="#reports">Reports</a><a href="#sops">SOPs</a><a href="#applications">Applications</a><a class="admin-link" href="#admin">Admin</a></nav><button class="menu" onclick="toggleMenu()">☰</button></header>
+<main>
+<section class="hero" id="home"><div class="hero-copy"><div class="kicker">BLAINE COUNTY • SAN ANDREAS</div><h1>Serving with <span>honor.</span><br>Protecting our community.</h1><p>The official BCSO department portal. Access personnel, reports, policies, applications and command resources from one secure location.</p><div class="actions"><a class="btn gold" href="#roster">View Department</a><a class="btn ghost" href="#applications">Join BCSO →</a></div></div><div class="hero-card"><div class="seal">★</div><b>BLAINE COUNTY</b><strong>SHERIFF'S OFFICE</strong><small>EST. 2026 • SAN ANDREAS</small></div></section>
+<section class="stats"><div><b>42</b><span>Active Personnel</span></div><div><b>6</b><span>Divisions</span></div><div><b>128</b><span>Reports Filed</span></div><div><b>24/7</b><span>Community Service</span></div></section>
+<section class="section" id="roster"><div class="heading"><div><span class="kicker">PERSONNEL</span><h2>Department Roster</h2></div><input id="rosterSearch" oninput="filterRoster()" placeholder="Search personnel..."></div><div class="table-wrap"><table><thead><tr><th>NAME</th><th>RANK</th><th>DIVISION</th><th>STATUS</th></tr></thead><tbody id="rosterBody"><tr><td><b>John Reacher</b><small>Callsign 5299</small></td><td>Lieutenant</td><td>Traffic Enforcement Unit</td><td><span class="online">● Active</span></td></tr><tr><td><b>Alex Johnson</b><small>Callsign 5204</small></td><td>Sergeant</td><td>Patrol Division</td><td><span class="online">● Active</span></td></tr><tr><td><b>Michael Carter</b><small>Callsign 5142</small></td><td>Deputy</td><td>Patrol Division</td><td><span class="online">● Active</span></td></tr><tr><td><b>Sarah Williams</b><small>Callsign 5310</small></td><td>Corporal</td><td>K9 Unit</td><td><span class="away">● On Leave</span></td></tr></tbody></table></div></section>
+<section class="section alt" id="reports"><div class="heading"><div><span class="kicker">DOCUMENTATION</span><h2>Reports</h2><p>Department documentation and reporting resources.</p></div></div><div class="cards"><article><div class="icon">📝</div><h3>Arrest Report</h3><p>Document arrests, charges, evidence and disposition.</p><a href="#applications">Open Template →</a></article><article><div class="icon">🚓</div><h3>Incident Report</h3><p>Record incidents, involved parties, locations and actions taken.</p><a href="#applications">Open Template →</a></article><article><div class="icon">⚠️</div><h3>Supervisor Report</h3><p>Submit administrative and supervisory documentation.</p><a href="#applications">Open Template →</a></article></div></section>
+<section class="section" id="sops"><div class="heading"><div><span class="kicker">POLICY CENTER</span><h2>Standard Operating Procedures</h2><p>Current department policies and operational guidance.</p></div></div><div class="sop-grid"><article><span>01</span><h3>General Operations</h3><p>Core expectations, conduct and patrol procedures.</p><button onclick="showInfo('General Operations','This section will contain your approved BCSO general operations SOP.')">View SOP →</button></article><article><span>02</span><h3>Traffic Enforcement</h3><p>Traffic stops, pursuits, radar and TEU procedures.</p><button onclick="showInfo('Traffic Enforcement','This section will contain your approved traffic enforcement and TEU SOP.')">View SOP →</button></article><article><span>03</span><h3>Use of Force</h3><p>Department standards for lawful and proportional force.</p><button onclick="showInfo('Use of Force','This section will contain your approved use-of-force SOP.')">View SOP →</button></article><article><span>04</span><h3>Radio & Communications</h3><p>Radio discipline, codes and communications procedures.</p><button onclick="showInfo('Radio & Communications','This section will contain your approved communications SOP.')">View SOP →</button></article></div></section>
+<section class="section alt" id="applications"><div class="heading"><div><span class="kicker">RECRUITMENT</span><h2>Applications</h2><p>Interested in joining BCSO or a specialized subdivision?</p></div></div><div class="cards"><article><div class="icon">👮</div><h3>BCSO Application</h3><p>Apply to become a member of the Blaine County Sheriff's Office.</p><button onclick="showInfo('BCSO Application','Application form coming soon. Add your Discord/application URL here.')">Apply Now →</button></article><article><div class="icon">🚔</div><h3>TEU Application</h3><p>Apply for the Traffic Enforcement Unit and specialized training.</p><button onclick="showInfo('TEU Application','TEU application form coming soon. Add your application URL here.')">Apply Now →</button></article><article><div class="icon">🐕</div><h3>K9 Application</h3><p>Apply for K9 training and handler selection.</p><button onclick="showInfo('K9 Application','K9 application form coming soon. Add your application URL here.')">Apply Now →</button></article></div></section>
+<section class="section admin-section" id="admin"><div class="admin-box"><div><span class="kicker">COMMAND ACCESS</span><h2>Admin Panel</h2><p>Manage roster information, department documents, applications and website content.</p></div><button class="btn gold" onclick="showInfo('Admin Panel','The admin dashboard will be connected to your authentication/database when those services are added.')">Open Admin Panel</button></div></section>
+</main>
+<footer><div class="footer-brand"><span class="badge">★</span><div><b>BCSO</b><small>BLAINE COUNTY SHERIFF'S OFFICE</small></div></div><div>© 2026 Blaine County Sheriff's Office • Department Portal</div></footer>
+<div class="modal" id="modal" onclick="if(event.target===this)closeInfo()"><div class="modal-card"><button class="close" onclick="closeInfo()">×</button><span class="kicker">BCSO PORTAL</span><h2 id="modalTitle"></h2><p id="modalText"></p><button class="btn gold" onclick="closeInfo()">Close</button></div></div>
+<script src="script.js"></script>
+</body></html>
