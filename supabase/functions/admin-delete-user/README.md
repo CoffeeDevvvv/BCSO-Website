@@ -1,0 +1,1 @@
+Deploy with Supabase CLI after linking this project. The function requires the platform-provided SUPABASE_URL, SUPABASE_ANON_KEY and SUPABASE_SERVICE_ROLE_KEY secrets. Do not copy the service role key into frontend code.
