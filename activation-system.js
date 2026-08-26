@@ -1,0 +1,6 @@
+/* BCSO new-deputy activation UI helpers. Permanent passwords belong in Supabase Auth. */
+(function(){
+ const alphabet='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';
+ window.generateAccessCode=function(n=10){let s='';for(let i=0;i<n;i++)s+=alphabet[Math.floor(Math.random()*alphabet.length)];return s};
+ window.buildWelcomeMessage=function(d,code){return `🎖️ CONGRATULATIONS ON YOUR ${d.isPromotion?'PROMOTION':'NEW ASSIGNMENT'}! 🎖️\n\nDear ${d.name},\n\nCongratulations on your new BCSO assignment to ${d.rank}!\n\nYOUR NEW ASSIGNMENT DETAILS:\n• Rank: ${d.rank}\n• District: ${d.district||'Not Assigned'}\n• Callsign: ${d.callsign}\n• Username: ${d.username}\n• Access Code: ${code}\n\nACCOUNT ACTIVATION INSTRUCTIONS:\n1. Navigate to the BCSO Command Portal.\n2. Click NEW DEPUTY / ACCESS CODE.\n3. Enter your Username and Access Code.\n4. Create and confirm your new password.\n5. Save your password securely.\n\nIMPORTANT POLICY UPDATE:\nMoving forward, all reports must be submitted through the BCSO website so department documentation and performance records remain centralized.\n\nNEXT STEPS:\n• Complete account setup immediately.\n• Review the deputy portal and current SOPs.\n• Begin submitting reports through the website.\n• Contact your supervisor with questions.\n\nBest regards,\nBCSO Leadership Team`};
+})();
