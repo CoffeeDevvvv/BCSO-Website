@@ -1,6 +1,25 @@
-/* BCSO new-deputy activation UI helpers. Permanent passwords belong in Supabase Auth. */
+/* BCSO new-deputy activation UI. Permanent passwords should ultimately be handled by Supabase Auth. */
 (function(){
  const alphabet='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';
  window.generateAccessCode=function(n=10){let s='';for(let i=0;i<n;i++)s+=alphabet[Math.floor(Math.random()*alphabet.length)];return s};
  window.buildWelcomeMessage=function(d,code){return `🎖️ CONGRATULATIONS ON YOUR ${d.isPromotion?'PROMOTION':'NEW ASSIGNMENT'}! 🎖️\n\nDear ${d.name},\n\nCongratulations on your new BCSO assignment to ${d.rank}!\n\nYOUR NEW ASSIGNMENT DETAILS:\n• Rank: ${d.rank}\n• District: ${d.district||'Not Assigned'}\n• Callsign: ${d.callsign}\n• Username: ${d.username}\n• Access Code: ${code}\n\nACCOUNT ACTIVATION INSTRUCTIONS:\n1. Navigate to the BCSO Command Portal.\n2. Click NEW DEPUTY / ACCESS CODE.\n3. Enter your Username and Access Code.\n4. Create and confirm your new password.\n5. Save your password securely.\n\nIMPORTANT POLICY UPDATE:\nMoving forward, all reports must be submitted through the BCSO website so department documentation and performance records remain centralized.\n\nNEXT STEPS:\n• Complete account setup immediately.\n• Review the deputy portal and current SOPs.\n• Begin submitting reports through the website.\n• Contact your supervisor with questions.\n\nBest regards,\nBCSO Leadership Team`};
+ window.showActivation=function(){
+   document.getElementById('loginView')?.classList.add('hidden'); document.getElementById('appView')?.classList.add('hidden');
+   let v=document.getElementById('activationView');
+   if(!v){v=document.createElement('div');v.id='activationView';v.className='login-view';document.body.appendChild(v)}
+   v.classList.remove('hidden');
+   v.innerHTML=`<div class="login-card"><div class="seal">★</div><div class="eyebrow">BLAINE COUNTY SHERIFF'S OFFICE</div><h1>NEW DEPUTY <em>ACTIVATION</em></h1><p>Use the one-time Access Code provided by BCSO Leadership.</p><form id="activationForm"><label>USERNAME<input id="activationUsername" required autocomplete="username" placeholder="your_username"></label><label>ACCESS CODE<input id="activationCode" required autocomplete="one-time-code" placeholder="XXXXXXXXXX"></label><button class="primary wide" type="submit">VERIFY ACCESS CODE →</button><div id="activationError" class="error"></div></form><button class="activation-link" type="button" onclick="backToLogin()">← Back to Sign In</button></div>`;
+   document.getElementById('activationForm').addEventListener('submit',e=>{e.preventDefault();verifyActivation()});
+ };
+ window.backToLogin=function(){document.getElementById('activationView')?.classList.add('hidden');document.getElementById('loginView')?.classList.remove('hidden')};
+ window.verifyActivation=function(){
+   const username=document.getElementById('activationUsername').value.trim(); const code=document.getElementById('activationCode').value.trim();
+   const users=window.db?.users||db?.users||{}; const key=Object.keys(users).find(k=>k===username||users[k]?.username===username); const local=key?users[key]:null;
+   const records=window.activationRecords||[]; const record=records.find(x=>x.username===username&&x.code===code&&!x.used);
+   if(!record&&!local){document.getElementById('activationError').textContent='Invalid username or Access Code.';return}
+   const u=record?.user||local||{name:username,rank:'Cadet'};
+   const v=document.getElementById('activationView'); v.innerHTML=`<div class="login-card"><div class="seal">✓</div><div class="eyebrow">ACCOUNT VERIFIED</div><h1>CREATE <em>PASSWORD</em></h1><p>Welcome, ${String(u.name||username).replace(/[&<>]/g,'')}.</p><form id="newPasswordForm"><label>NEW PASSWORD<input id="newPassword" type="password" minlength="8" required></label><label>CONFIRM PASSWORD<input id="confirmPassword" type="password" minlength="8" required></label><button class="primary wide">ACTIVATE ACCOUNT →</button><div id="activationError" class="error"></div></form></div>`;
+   document.getElementById('newPasswordForm').addEventListener('submit',e=>finishActivation(e,username));
+ };
+ window.finishActivation=function(e,username){e.preventDefault();const a=document.getElementById('newPassword').value,b=document.getElementById('confirmPassword').value;if(a.length<8){document.getElementById('activationError').textContent='Password must be at least 8 characters.';return}if(a!==b){document.getElementById('activationError').textContent='Passwords do not match.';return}const users=window.db?.users||db?.users||{};const key=Object.keys(users).find(k=>k===username||users[k]?.username===username);if(!key){document.getElementById('activationError').textContent='Account record was not found.';return}users[key].password=a;users[key].activated=true;db.users=users;save();current={...users[key],callsign:key};sessionStorage.setItem('bcsoCurrent',JSON.stringify(current));document.getElementById('activationView').classList.add('hidden');openApp();toast('Account activated successfully')};
 })();
