@@ -1,0 +1,12 @@
+/* FINAL DARK UI OVERRIDES — loaded last */
+body .section-card,body .card,body .panel,body .widget,body .table-wrap,body .dashboard-card,body .stat-card,body .subdivision-card,body .sub-card,body .content-card,body .report-card{background:#121923!important;color:#e8edf2!important;border-color:#2b3947!important;}
+body .section-card h1,body .section-card h2,body .section-card h3,body .section-card h4,body .card h1,body .card h2,body .card h3,body .card h4,body .panel h1,body .panel h2,body .panel h3,body .panel h4,body .subdivision-card h1,body .subdivision-card h2,body .subdivision-card h3,body .sub-card h1,body .sub-card h2,body .sub-card h3{color:#eef2f5!important;opacity:1!important;}
+body .section-card p,body .card p,body .panel p,body .subdivision-card p,body .sub-card p,body .section-card small,body .card small{color:#9ca8b5!important;opacity:1!important;}
+body .section-card strong,body .card strong,body .subdivision-card strong,body .sub-card strong{color:#e8edf2!important;}
+body .section-card .muted,body .card .muted,body .subdivision-card .muted,body .sub-card .muted{color:#8f9baa!important;}
+body .table,body table{color:#e5ebef!important;background:#0f151d!important;}
+body .table td,body .table th,body table td,body table th{color:#dfe6eb!important;background:#101720!important;border-color:#263340!important;}
+body .table th,body table th{color:#8492a1!important;}
+body input,body textarea,body select{background:#0b1118!important;color:#e8edf2!important;border-color:#2c3947!important;}
+body label{color:#cbd4dc!important;}
+body .empty{color:#8f9baa!important;}
